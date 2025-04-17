@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧠 Czacha z CT</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    .project-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      padding-top: 2rem;
+    }
+
+    .project-description {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 1rem;
+      padding: 2rem;
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 500px;
+    }
+
+    @media (max-width: 768px) {
+      .project-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html">← Powrót</a>
+
+    <div class="project-layout">
+      <div class="project-description">
+        <h2>🧠 Czacha z CT</h2>
+        <ul>
+          <li>Model 3D mojej głowy stworzony na podstawie skanu CT</li>
+          <li>Obróbka w programie 3D Slicer</li>
+          <li>Eksport do STL i wydruk 3D</li>
+        </ul>
+        <hr>
+        <ul style="opacity: 0.7; font-size: 0.9rem;">
+          <li>3D model of my head based on CT scan</li>
+          <li>Processed in 3D Slicer</li>
+          <li>Exported to STL and printed in full scale</li>
+        </ul>
+      </div>
+
+      <model-viewer 
+        src="../assets/models/clowa.glb" 
+        alt="Model 3D głowy" 
+        auto-rotate 
+        camera-controls 
+        background-color="#f5f5f5">
+      </model-viewer>
+    </div>
+  </div>
+</body>
+</html>
+

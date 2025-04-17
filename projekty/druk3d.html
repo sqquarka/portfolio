@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Druk 3D – Skrzynka DAQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css" />
+  <style>
+    :root {
+      --primary-color: #111;
+      --accent-color: #7AFF69;
+    }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: var(--accent-color);
+      color: #111;
+      overflow: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 2vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+      padding: 0.5rem 2.5rem;
+      
+      color: #111;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      z-index: 20;
+      
+      font-family: 'Bebas Neue', sans-serif;
+     
+    }
+
+    .gallery-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 100vh;
+      overflow: auto;
+      padding-top: 12vh;
+    }
+
+    .gallery-container {
+      display: flex;
+      height: 100%;
+      width: max-content;
+      scroll-snap-type: x mandatory;
+      white-space: nowrap;
+    }
+
+    .gallery-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .image-wrapper {
+      position: relative;
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      height: calc(100vh - 12vh);
+    }
+
+    .image-wrapper img {
+      height: 100%;
+      width: auto;
+      
+    }
+
+    .image-caption {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(0, 0, 0, 0.6);
+      color: var(--accent-color);
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      backdrop-filter: blur(4px);
+    }
+
+    .description {
+      position: fixed;
+      top: calc(2vh + 3.5rem);
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+      padding: 1rem 2rem;
+      background: linear-gradient(to bottom, var(--accent-color), rgba(122, 255, 105, 0));
+      color: #111;
+      backdrop-filter: blur(20px);
+      transition: opacity 0.5s ease;
+      z-index: 19;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    .description.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: -100px;
+      left: 0;
+      width: 100%;
+      background: var(--accent-color);
+      color: black;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      transition: bottom 0.6s ease;
+      z-index: 15;
+    }
+
+    .footer.visible {
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>MULTIPLEKSER</header>
+
+  <div class="description" id="mainDescription">
+    <ul>
+      <li>3D drukowana obudowa dla systemu DAQ (20 kanałów)</li>
+      <li>Gniazda BNC i elektronika rozdzielająca</li>
+      <li>Kompatybilna z Keysight</li>
+      <li>Wzmocniona konstrukcja i ekranowanie EMI</li>
+      <li>Mocowanie dla płytki PCB wewnątrz</li>
+    </ul>
+  </div>
+
+  <div class="gallery-wrapper" id="galleryWrapper">
+    <div class="gallery-container" id="galleryContainer">
+      <div class="image-wrapper">
+        <img src="../assets/images/druk3d/1.jpeg" loading="lazy" alt="Zdjęcie 1" />
+        <div class="image-caption">Widok z przodu – główny panel z gniazdami BNC</div>
+      </div>
+      <div class="image-wrapper">
+        <img src="../assets/images/druk3d/2.jpeg" loading="lazy" alt="Zdjęcie 2" />
+        <div class="image-caption">Mocowanie PCB i ekranowanie wewnętrzne</div>
+      </div>
+      <div class="image-wrapper">
+        <img src="../assets/images/druk3d/3.jpeg" loading="lazy" alt="Zdjęcie 3" />
+        <div class="image-caption">Widok z tyłu – przewody i osłona</div>
+      </div>
+      <div class="image-wrapper">
+        <img src="../assets/images/druk3d/4.jpeg" loading="lazy" alt="Zdjęcie 4" />
+        <div class="image-caption">Dolna część obudowy z wentylacją</div>
+      </div>
+      <div class="image-wrapper">
+        <img src="../assets/images/druk3d/5.jpeg" loading="lazy" alt="Zdjęcie 5" />
+        <div class="image-caption">Uchwyty montażowe i wzmocnienia narożników</div>
+      </div>
+      <div class="image-wrapper">
+        <img src="../assets/images/druk3d/6.jpeg" loading="lazy" alt="Zdjęcie 6" />
+        <div class="image-caption">Widok przekroju z widocznym ekranowaniem</div>
+      </div>
+      <div class="image-wrapper">
+        <img src="../assets/images/druk3d/7.jpeg" loading="lazy" alt="Zdjęcie 7" />
+        <div class="image-caption">Kompletna skrzynka gotowa do podłączenia</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer" id="footer">© 2025 – ERG | Projekt autorski</div>
+
+  <script>
+    const galleryWrapper = document.getElementById('galleryWrapper');
+    const mainDescription = document.getElementById('mainDescription');
+    const galleryContainer = document.getElementById('galleryContainer');
+    const footer = document.getElementById('footer');
+    const wrappers = galleryContainer.querySelectorAll('.image-wrapper');
+
+    galleryWrapper.addEventListener('wheel', (e) => {
+      if (e.deltaY !== 0) {
+        galleryWrapper.scrollLeft += e.deltaY;
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    let lastScrollLeft = 0;
+    galleryWrapper.addEventListener('scroll', () => {
+      const currentScroll = galleryWrapper.scrollLeft;
+      const maxScroll = galleryWrapper.scrollWidth - galleryWrapper.clientWidth;
+
+      if (currentScroll > lastScrollLeft + 10) {
+        mainDescription.classList.add('hidden');
+      } else if (currentScroll < lastScrollLeft - 10 || currentScroll <= 10) {
+        mainDescription.classList.remove('hidden');
+      }
+
+      if (currentScroll >= maxScroll - 5) {
+        footer.classList.add('visible');
+      } else {
+        footer.classList.remove('visible');
+      }
+
+      lastScrollLeft = currentScroll;
+    });
+  </script>
+</body>
+</html> 

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #111;
+      --accent-color: #7AFF69;
+    }
+
+    body {
+      margin: 0;
+      background: var(--accent-color);
+      font-family: 'Bebas Neue', sans-serif;
+      color: #111;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      font-size: 4rem;
+      font-weight: bold;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .project-tile {
+      background: rgba(0, 0, 0, 0.6);
+      color: var(--accent-color);
+      padding: 2rem;
+      border-radius: 16px;
+      backdrop-filter: blur(6px);
+      transition: transform 0.3s ease;
+    }
+
+    .project-tile:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-tile h2 {
+      margin: 0 0 1rem 0;
+      font-size: 2rem;
+    }
+
+    .project-tile a {
+      text-decoration: none;
+      color: var(--accent-color);
+    }
+  </style>
+</head>
+<body>
+  <header>PORTFOLIO</header>
+
+  <main class="project-grid">
+    <div class="project-tile">
+      <h2><a href="projekty/druk3d.html">Skrzynka DAQ 3D</a></h2>
+      <p>Obudowa do systemu pomiarowego 20 kanałów, projektowana i drukowana w 3D.</p>
+    </div>
+    <div class="project-tile">
+      <h2><a href="projekty/glowa.html">Skan 3D głowy</a></h2>
+      <p>Modelowanie i druk 3D na podstawie danych z tomografii.</p>
+    </div>
+    <div class="project-tile">
+      <h2><a href="projekty/lab.html">Moduły labowe</a></h2>
+      <p>Uchwyty, podstawki, elementy testowe do pracowni pomiarowej.</p>
+    </div>
+  </main>
+</body>
+</html>
