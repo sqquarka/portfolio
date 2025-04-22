@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🧠 Czacha z CT</title>
   <link rel="stylesheet" href="../assets/style.css" />
@@ -22,9 +22,22 @@
     }
 
     a {
-      color: #000;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
       text-decoration: none;
+      color: #000;
       font-weight: bold;
+      background: linear-gradient(238deg, rgba(253, 197, 245, 1) 10%, rgba(247, 174, 248, 1) 30%, rgba(179, 136, 235, 1) 50%, rgba(128, 147, 241, 1) 70%, rgba(114, 221, 247, 1) 90%);
+    }
+
+    .fancy-gradient {
+      background: linear-gradient(238deg, rgba(253, 197, 245, 1) 10%, rgba(247, 174, 248, 1) 30%, rgba(179, 136, 235, 1) 50%, rgba(128, 147, 241, 1) 70%, rgba(114, 221, 247, 1) 90%);
+      color: black;
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 0.75rem;
     }
 
     .project-layout {
@@ -81,6 +94,7 @@
       </div>
 
       <model-viewer 
+        id="glassModel"
         src="../assets/models/clowa.glb" 
         alt="Model 3D głowy" 
         auto-rotate 
@@ -89,5 +103,21 @@
       </model-viewer>
     </div>
   </div>
+
+  <footer class="fancy-gradient">
+    Kontakt: antoni@example.com
+  </footer>
+
+  <script>
+    const viewer = document.getElementById("glassModel");
+
+    viewer.addEventListener("load", () => {
+      const material = viewer.model.materials[0];
+      material.pbrMetallicRoughness.setBaseColorFactor([0.0, 0.3, 0.2, 0.6]); // ciemna zieleń z przezroczystością
+      material.pbrMetallicRoughness.metallicFactor = 1.0;
+      material.pbrMetallicRoughness.roughnessFactor = 0.1;
+      material.alphaMode = "BLEND";
+    });
+  </script>
 </body>
 </html>
