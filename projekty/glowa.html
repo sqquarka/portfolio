@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🧠 Czacha z CT</title>
   <link rel="stylesheet" href="../assets/style.css" />
@@ -13,18 +13,31 @@
       min-height: 100vh;
       background: linear-gradient(81deg, rgba(0, 127, 95, 1) 1%, rgba(170, 204, 0, 1) 73%, rgba(255, 255, 63, 1) 100%);
       font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 2rem;
+      flex: 1;
     }
 
-    a {
-      color: #000;
-      text-decoration: none;
+    .back-button {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      margin-bottom: 1rem;
       font-weight: bold;
+      border-radius: 0.6rem;
+      text-decoration: none;
+      color: #000;
+      background: linear-gradient(238deg, rgba(253, 197, 245, 1) 10%, rgba(247, 174, 248, 1) 30%, rgba(179, 136, 235, 1) 50%, rgba(128, 147, 241, 1) 70%, rgba(114, 221, 247, 1) 90%);
+      transition: transform 0.2s ease;
+    }
+
+    .back-button:hover {
+      transform: scale(1.05);
     }
 
     .project-layout {
@@ -53,6 +66,34 @@
       backdrop-filter: blur(6px);
     }
 
+    .image-preview {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .image-preview img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      filter: grayscale(100%) brightness(0.8);
+      transition: transform 0.4s ease, filter 0.4s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .image-preview img:hover {
+      transform: scale(1.05);
+      filter: grayscale(0%) brightness(1);
+    }
+
+    footer {
+      background: linear-gradient(238deg, rgba(253, 197, 245, 1) 10%, rgba(247, 174, 248, 1) 30%, rgba(179, 136, 235, 1) 50%, rgba(128, 147, 241, 1) 70%, rgba(114, 221, 247, 1) 90%);
+      padding: 1.5rem;
+      text-align: center;
+      font-weight: bold;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+
     @media (max-width: 768px) {
       .project-layout {
         grid-template-columns: 1fr;
@@ -62,7 +103,7 @@
 </head>
 <body>
   <div class="container">
-    <a href="../index.html">← Powrót</a>
+    <a class="back-button" href="../index.html">← Powrót</a>
 
     <div class="project-layout">
       <div class="project-description">
@@ -78,6 +119,10 @@
           <li>Processed in 3D Slicer</li>
           <li>Exported to STL and printed in full scale</li>
         </ul>
+
+        <div class="image-preview">
+          <img src="../assets/images/glowa/image.jpeg" alt="Obraz CT">
+        </div>
       </div>
 
       <model-viewer 
@@ -89,5 +134,9 @@
       </model-viewer>
     </div>
   </div>
+
+  <footer>
+    Kontakt: antoni@example.com
+  </footer>
 </body>
 </html>
