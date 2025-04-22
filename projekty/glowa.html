@@ -109,15 +109,20 @@
   </footer>
 
   <script>
-    const viewer = document.getElementById("glassModel");
+  const viewer = document.getElementById("glassModel");
 
-    viewer.addEventListener("load", () => {
-      const material = viewer.model.materials[0];
-      material.pbrMetallicRoughness.setBaseColorFactor([0.0, 0.3, 0.2, 0.6]); // ciemna zieleń z przezroczystością
-      material.pbrMetallicRoughness.metallicFactor = 1.0;
-      material.pbrMetallicRoughness.roughnessFactor = 0.1;
-      material.alphaMode = "BLEND";
-    });
-  </script>
+  viewer.addEventListener("load", () => {
+    const material = viewer.model.materials[0];
+    material.pbrMetallicRoughness.setBaseColorFactor([0.0, 0.3, 0.2, 0.3]); // ciemna zieleń z alfa 0.3
+    material.pbrMetallicRoughness.metallicFactor = 1.0;
+    material.pbrMetallicRoughness.roughnessFactor = 0.05;
+    material.alphaMode = "BLEND";
+    material.doubleSided = true;
+    
+    viewer.reveal = 'manual';
+    viewer.model.scene.visible = true;
+  });
+</script>
+
 </body>
 </html>
