@@ -7,104 +7,101 @@
   <link rel="stylesheet" href="../assets/style.css" />
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      background: linear-gradient(81deg, rgba(0, 127, 95, 1) 1%, rgba(170, 204, 0, 1) 73%, rgba(255, 255, 63, 1) 100%);
-      font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-    }
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #e2fcd4; /* bardzo jasny zielony */
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-      flex: 1;
-    }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    flex: 1;
+  }
 
-    .back-button {
+  .back-button {
     display: inline-block;
     padding: 0.6rem 1.2rem;
     margin-bottom: 1rem;
     font-weight: bold;
     border-radius: 0.6rem;
     text-decoration: none;
-    color: #000;
-    background-image: linear-gradient(135deg, #FFDB01 10%, #0E197D 100%);
+    background-color: #a89f91; /* wysuszone liście */
     color: white;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
+  }
 
-    .back-button:hover {
+  .back-button:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-    }
+  }
 
+  .project-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    padding-top: 2rem;
+  }
 
+  .project-description {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    padding: 2rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    color: #000;
+  }
+
+  model-viewer {
+    width: 100%;
+    height: 500px;
+    border-radius: 1rem;
+    background-color: #fdcfff; /* pastelowy róż/fiolet */
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .image-preview {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .image-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    filter: grayscale(100%) brightness(0.8);
+    transition: transform 0.4s ease, filter 0.4s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .image-preview img:hover {
+    transform: scale(1.05);
+    filter: grayscale(0%) brightness(1);
+  }
+
+  footer {
+    background-color: #a89f91; /* kolor wysuszonych liści */
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+
+  @media (max-width: 768px) {
     .project-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: center;
-      padding-top: 2rem;
+      grid-template-columns: 1fr;
     }
-
-    .project-description {
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 1rem;
-      padding: 2rem;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-      color: #000;
-    }
-
-    model-viewer {
-      width: 100%;
-      height: 500px;
-      border-radius: 1rem;
-      color: #ddd8c4;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
-      background-color: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(6px);
-    }
-
-    .image-preview {
-      margin-top: 2rem;
-      text-align: center;
-    }
-
-    .image-preview img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 1rem;
-      filter: grayscale(100%) brightness(0.8);
-      transition: transform 0.4s ease, filter 0.4s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .image-preview img:hover {
-      transform: scale(1.05);
-      filter: grayscale(0%) brightness(1);
-    }
-
-    footer {
-      background: linear-gradient(238deg, rgba(253, 197, 245, 1) 10%, rgba(247, 174, 248, 1) 30%, rgba(179, 136, 235, 1) 50%, rgba(128, 147, 241, 1) 70%, rgba(114, 221, 247, 1) 90%);
-      padding: 1.5rem;
-      text-align: center;
-      font-weight: bold;
-      border-top-left-radius: 1rem;
-      border-top-right-radius: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      .project-layout {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
   <div class="container">
@@ -131,12 +128,13 @@
       </div>
 
       <model-viewer 
-        src="../assets/models/clowa.glb" 
-        alt="Model 3D głowy" 
-        auto-rotate 
-        camera-controls 
-        background-color="#f5f5f5">
-      </model-viewer>
+  src="../assets/models/clowa.glb" 
+  alt="Model 3D głowy" 
+  auto-rotate 
+  camera-controls 
+  background-color="#fdcfff">
+</model-viewer>
+
     </div>
   </div>
 
