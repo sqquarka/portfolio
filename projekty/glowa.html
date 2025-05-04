@@ -7,101 +7,100 @@
   <link rel="stylesheet" href="../assets/style.css" />
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
-  body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    background: #e2fcd4; /* bardzo jasny zielony */
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    flex: 1;
-  }
-
-  .back-button {
-    display: inline-block;
-    padding: 0.6rem 1.2rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    border-radius: 0.6rem;
-    text-decoration: none;
-    background-color: #a89f91; /* wysuszone liście */
-    color: white;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  .back-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-  }
-
-  .project-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: center;
-    padding-top: 2rem;
-  }
-
-  .project-description {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 1rem;
-    padding: 2rem;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    color: #000;
-  }
-
-  model-viewer {
-    width: 100%;
-    height: 500px;
-    border-radius: 1rem;
-    background-color: #fdcfff; /* pastelowy róż/fiolet */
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
-  }
-
-  .image-preview {
-    margin-top: 2rem;
-    text-align: center;
-  }
-
-  .image-preview img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 1rem;
-    filter: grayscale(100%) brightness(0.8);
-    transition: transform 0.4s ease, filter 0.4s ease;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .image-preview img:hover {
-    transform: scale(1.05);
-    filter: grayscale(0%) brightness(1);
-  }
-
-  footer {
-    background-color: #a89f91; /* kolor wysuszonych liści */
-    color: white;
-    padding: 1.5rem;
-    text-align: center;
-    font-weight: bold;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-  }
-
-  @media (max-width: 768px) {
-    .project-layout {
-      grid-template-columns: 1fr;
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: #BBc397;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
     }
-  }
-</style>
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      flex: 1;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      border-radius: 0.6rem;
+      text-decoration: none;
+      background-color: #1c2a1a;
+      color: #BBc397;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .back-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .project-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      padding-top: 2rem;
+    }
+
+    .project-description {
+      background: #ffc9c4;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      color: #405418;
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 500px;
+      border-radius: 1rem;
+      background-color: #ffc9c4;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .image-preview {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .image-preview img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      filter: grayscale(100%) sepia(100%) hue-rotate(70deg) brightness(0.9);
+      transition: transform 0.4s ease, filter 0.4s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .image-preview img:hover {
+      transform: scale(1.05);
+      filter: none;
+    }
+
+    footer {
+      background-color: #1c2a1a;
+      color: #BBc397;
+      padding: 1.5rem;
+      text-align: center;
+      font-weight: bold;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .project-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -128,28 +127,28 @@
       </div>
 
       <model-viewer 
-  src="../assets/models/clowa.glb" 
-  alt="Model 3D głowy" 
-  auto-rotate 
-  camera-controls 
-  background-color="#fdcfff">
-</model-viewer>
-
+        src="../assets/models/clowa.glb" 
+        alt="Model 3D głowy" 
+        auto-rotate 
+        camera-controls 
+        background-color="#ffc9c4">
+      </model-viewer>
     </div>
   </div>
 
   <footer>
     Kontakt: antoni@example.com
   </footer>
-  <script>
-  const viewer = document.querySelector("model-viewer");
 
-  viewer.addEventListener("load", () => {
-    const material = viewer.model.materials[0];
-    material.pbrMetallicRoughness.setBaseColorFactor([0.867, 0.847, 0.769, 1]); // kolor #ddd8c4 w RGBA
-    material.pbrMetallicRoughness.metallicFactor = 0.1;
-    material.pbrMetallicRoughness.roughnessFactor = 0.7;
-  });
-</script>
+  <script>
+    const viewer = document.querySelector("model-viewer");
+
+    viewer.addEventListener("load", () => {
+      const material = viewer.model.materials[0];
+      material.pbrMetallicRoughness.setBaseColorFactor([1.0, 0.81, 0.8, 1]); // odpowiada #ffc9c4
+      material.pbrMetallicRoughness.metallicFactor = 0.1;
+      material.pbrMetallicRoughness.roughnessFactor = 0.7;
+    });
+  </script>
 </body>
 </html>
