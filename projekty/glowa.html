@@ -28,10 +28,12 @@
 
     .skull {
       position: absolute;
-      width: 60px;
-      height: 60px;
+      width: 40px;
+      height: 40px;
       animation: fall linear infinite;
-      opacity: 0.5;
+      opacity: 0.4;
+      background: url('../assets/images/glowa/skull_icon.jpg') no-repeat center center;
+      background-size: contain;
     }
 
     @keyframes fall {
@@ -39,7 +41,7 @@
         transform: translateY(-100px) rotate(0deg);
         opacity: 0;
       }
-      20% { opacity: 0.5; }
+      20% { opacity: 0.4; }
       100% {
         transform: translateY(110vh) rotate(360deg);
         opacity: 0;
@@ -202,13 +204,10 @@
   </footer>
 
   <script>
-    // Skull rain generation
+    // Skull rain generation (uses skull icon/image instead of model-viewer)
     const container = document.getElementById('skull-rain');
     for (let i = 0; i < 10; i++) {
-      const skull = document.createElement('model-viewer');
-      skull.setAttribute('src', '../assets/models/clowa.glb');
-      skull.setAttribute('autoplay', '');
-      skull.setAttribute('camera-controls', '');
+      const skull = document.createElement('div');
       skull.classList.add('skull');
       skull.style.left = Math.random() * 100 + 'vw';
       skull.style.animationDuration = 5 + Math.random() * 5 + 's';
