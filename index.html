@@ -3,79 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <title>Portfolio - Antoni</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <!-- Model Viewer for 3D intro -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
-    :root {
-      --primary-color: #111;
-      --accent-color: #7AFF69;
-    }
-
-    body {
-      margin: 0;
-      background: var(--accent-color);
-      font-family: 'Bebas Neue', sans-serif;
-      color: #111;
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem;
-      font-size: 4rem;
-      font-weight: bold;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .project-tile {
-      background: rgba(0, 0, 0, 0.6);
-      color: var(--accent-color);
-      padding: 2rem;
-      border-radius: 16px;
-      backdrop-filter: blur(6px);
-      transition: transform 0.3s ease;
-    }
-
-    .project-tile:hover {
-      transform: translateY(-5px);
-    }
-
-    .project-tile h2 {
-      margin: 0 0 1rem 0;
-      font-size: 2rem;
-    }
-
-    .project-tile a {
-      text-decoration: none;
-      color: var(--accent-color);
-    }
+    /* Global */
+    :root { --main-bg: #BBc397; --accent-pink: rgba(255, 192, 203, 0.8); --text-dark: #1c2a1a; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: sans-serif; background: var(--main-bg); color: var(--text-dark); overflow-x: hidden; }
+    /* Skull rain */
+    .skull-rain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+    .skull { position: absolute; top: -10%; width: 40px; height: 40px; background: url('assets/images/glowa/skull_icon.jpg') no-repeat center/contain; animation: skullFall linear infinite; }
+    @keyframes skullFall { to { transform: translateY(110%); } }
+    /* Intro */
+    #intro { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; z-index: 1; }
+    #intro .intro-window { background: var(--accent-pink); padding: 2rem 4rem; border-radius: 2rem; backdrop-filter: blur(5px); text-align: center; }
+    #intro h1 { font-size: 4rem; letter-spacing: 0.5rem; }
+    #intro .intro-window span.t { display: inline-block; width: 1em; height: 1em; background: url('assets/images/mushroom.png') no-repeat center/contain; vertical-align: middle; }
+    /* Navigation */
+    nav { position: fixed; top: 1rem; right: 1rem; z-index: 2; }
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { text-decoration: none; color: var(--text-dark); font-weight: bold; }
+    /* Sections */
+    section { min-height: 100vh; padding: 4rem 2rem; position: relative; z-index: 1; }
+    .section-window { background: var(--accent-pink); padding: 2rem; border-radius: 1.5rem; max-width: 800px; margin: auto; backdrop-filter: blur(5px); }
+    /* Footer */
+    footer { text-align: center; padding: 2rem; }
   </style>
 </head>
 <body>
-  <header>PORTFOLIO</header>
+  <!-- Skull rain effect -->
+  <div class="skull-rain" id="skull-rain"></div>
+  <script>
+    const rain = document.getElementById('skull-rain');
+    for (let i = 0; i < 30; i++) {
+      const s = document.createElement('div');
+      s.className = 'skull';
+      s.style.left = Math.random() * 100 + 'vw';
+      s.style.animationDuration = 6 + Math.random() * 4 + 's';
+      s.style.animationDelay = Math.random() * 5 + 's';
+      rain.appendChild(s);
+    }
+  </script>
 
-  <main class="project-grid">
-    <div class="project-tile">
-      <h2><a href="projekty/druk3d.html">Skrzynka DAQ 3D</a></h2>
-      <p>Obudowa do systemu pomiarowego 20 kanałów, projektowana i drukowana w 3D.</p>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#intro">Intro</a></li>
+      <li><a href="#o-mnie">O mnie</a></li>
+      <li><a href="#hobby">Hobby</a></li>
+      <li><a href="#praca">Praca</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- Intro Section -->
+  <section id="intro">
+    <div class="intro-window">
+      <h1>A N<span class="t"></span>O N I</h1>
+      <p>Witaj w moim portfolio – zapraszam do eksploracji moich projektów.</p>
     </div>
-    <div class="project-tile">
-      <h2><a href="projekty/glowa.html">Skan 3D głowy</a></h2>
-      <p>Modelowanie i druk 3D na podstawie danych z tomografii.</p>
+  </section>
+
+  <!-- O mnie -->
+  <section id="o-mnie">
+    <div class="section-window">
+      <h2>O mnie</h2>
+      <ul>
+        <li>Metrolog z pasją do technologii, designu i druku 3D</li>
+        <li>Doświadczenie w projektowaniu PCB, skanowaniu CT i prototypowaniu</li>
+        <li>Interesuję się bushcraftem, naturą i vintage cottage design</li>
+      </ul>
     </div>
-    <div class="project-tile">
-      <h2><a href="projekty/lab.html">Moduły labowe</a></h2>
-      <p>Uchwyty, podstawki, elementy testowe do pracowni pomiarowej.</p>
+  </section>
+
+  <!-- Hobby -->
+  <section id="hobby">
+    <div class="section-window">
+      <h2>Hobby</h2>
+      <p>Uwielbiam eksperymentować z drukiem 3D, tworzyć DIY projekty i eksplorować techniki bushcraft.</p>
     </div>
-  </main>
+  </section>
+
+  <!-- Praca -->
+  <section id="praca">
+    <div class="section-window">
+      <h2>Praca</h2>
+      <p>Aktualnie pracuję nad portfolio, w którym prezentuję projekty w 3D, elektronikę oraz zaawansowane prototypy.</p>
+      <p>Zobacz podstrony z projektami, aby dowiedzieć się więcej.</p>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <footer id="kontakt">
+    <div class="section-window">
+      <h2>Kontakt</h2>
+      <p>antonico@example.com</p>
+    </div>
+  </footer>
 </body>
 </html>
